@@ -2,9 +2,9 @@
   import { countries } from 'country-flag-icons';
 
   export default{
-    name: 'MovieCard',
+    name: 'TvCard',
     props:{
-      movie: Object
+      tv: Object
     },
     data(){
       return{
@@ -13,17 +13,17 @@
     },
     computed:{
       countryControl(){
-        if(this.movie.original_language === "en"){
+        if(this.tv.original_language === "en"){
           return "GB";
         } else {
-          return this.movie.original_language.toUpperCase();
+          return this.tv.original_language.toUpperCase();
         }
       },
       country(){
-        if(this.movie.original_language === "en"){
+        if(this.tv.original_language === "en"){
           return "gb";
         } else{
-          return this.movie.original_language;
+          return this.tv.original_language;
         }
       }
     }
@@ -32,21 +32,22 @@
 
 <template>
   <div>
-    <span>Titolo: {{movie.title}}</span>
+    <span>Titolo: {{tv.name}}</span>
     <br>
-    <span>Titolo originale: {{movie.original_title}}</span>
+    <span>Titolo originale: {{tv.original_name}}</span>
     <br>
     <span v-if="countries.includes(countryControl)">Lingua: <span class="fi "
     :class="'fi-'+ country"></span></span>
-    <span v-else>Lingua: {{movie.original_language}}</span>
+    <span v-else>Lingua: {{tv.original_language}}</span>
     <br>
-    <span>Voto: {{movie.vote_average}}</span>
+    <span>Voto: {{tv.vote_average}}</span>
   </div>
 </template>
 
 <style lang="scss" scoped>
   @use '../styles/partials/vars' as *;
   @use '../styles/partials/mixin' as *;
+  @use '../styles/general' as *;
   
   div {
     border: 1px solid red;

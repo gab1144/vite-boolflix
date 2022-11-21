@@ -30,6 +30,19 @@
         .catch(error => {
           console.log(error);
         })
+
+        axios.get(store.apiUrlTv, {
+          params: {
+            api_key: store.apiKey,
+            query: store.searchedTitle,
+          }
+        })
+        .then(result=> {
+          store.tvListData = result.data;
+        })
+        .catch(error => {
+          console.log(error);
+        })
       }
     }
   }

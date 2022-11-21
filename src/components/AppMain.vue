@@ -2,6 +2,7 @@
 
   import {store} from '../data/store';
   import MoviesList from './MoviesList.vue';
+  import TvList from './TvList.vue';
 
   export default{
     name: 'AppMain',
@@ -11,17 +12,17 @@
       }
     },
     components:{
-      MoviesList
+      MoviesList,
+      TvList
     }
   }
 </script>
 
 <template>
-  <main>
-    <div class="container">
-      <h2>Film</h2>
-      <MoviesList/>
-    </div>
+  <main>  
+    <MoviesList/>
+    
+    <TvList/>
   </main>
 </template>
 

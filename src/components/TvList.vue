@@ -1,27 +1,27 @@
 <script>
   import {store} from '../data/store';
-  import MovieCard from './MovieCard.vue';
+  import TvCard from './TvCard.vue';
 
   export default{
-    name: 'MovieList',
+    name: 'TvList',
     data(){
       return {
         store
       }
     },
     components:{
-      MovieCard
+      TvCard
     }
   }
 </script>
 
 <template>
   <div class="container">
-    <h2>Film</h2>
-    <MovieCard
-      v-for="movie of store.moviesListData.results"
-      :key="movie.id"
-      :movie="movie"/>
+    <h2>Serie TV</h2>
+    <TvCard
+      v-for="tvSerie of store.tvListData.results"
+      :key="tvSerie.id"
+      :tv="tvSerie"/>
   </div>
 </template>
 
