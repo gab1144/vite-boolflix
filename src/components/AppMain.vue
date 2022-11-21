@@ -32,5 +32,6 @@
 
   main {
     color: white;
+    padding-bottom: 80px;
   }
 </style>
