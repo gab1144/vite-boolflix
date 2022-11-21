@@ -18,32 +18,47 @@
     },
     methods:{
       getMovies(){
-        axios.get(store.apiUrlMovies, {
-          params: {
-            api_key: store.apiKey,
-            query: store.searchedTitle,
-          }
-        })
-        .then(result=> {
-          store.moviesListData = result.data;
-        })
-        .catch(error => {
-          console.log(error);
-        })
+        if(store.firstApi || store.searchedTitle !== ""  & !store.firstApi){
 
-        axios.get(store.apiUrlTv, {
-          params: {
-            api_key: store.apiKey,
-            query: store.searchedTitle,
+          let urlMovies = store.apiUrlMovies;
+          let urlTv = store.apiUrlTv;
+          
+          if(store.firstApi){
+            urlMovies = store.apiUrlMoviesTop;
+            urlTv = store.apiUrlTvTop;
+            store.firstApi= false;
           }
-        })
-        .then(result=> {
-          store.tvListData = result.data;
-        })
-        .catch(error => {
-          console.log(error);
-        })
+          
+          axios.get(urlMovies, {
+            params: {
+              api_key: store.apiKey,
+              query: store.searchedTitle,
+            }
+          })
+          .then(result=> {
+            store.moviesListData = result.data;
+          })
+          .catch(error => {
+            console.log(error);
+          })
+        
+          axios.get(urlTv, {
+            params: {
+              api_key: store.apiKey,
+              query: store.searchedTitle,
+            }
+          })
+          .then(result=> {
+            store.tvListData = result.data;
+          })
+          .catch(error => {
+            console.log(error);
+          })
+        }
       }
+    }, 
+    mounted(){
+      this.getMovies();
     }
   }
 </script>

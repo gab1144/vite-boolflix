@@ -11,7 +11,7 @@
 
 <template>
   <header>
-    <img src="/public/logo-boolflix.png" alt="Logo Boolflix" class="logo">
+    <img src="/logo-boolflix.png" alt="Logo Boolflix" class="logo">
     <Searchbar @searchMovieorTv="$emit('search')"/>
   </header>
 </template>
