@@ -1,31 +1,15 @@
 <script>
-  import { countries } from 'country-flag-icons';
+  import VoteAverageStars from './VoteAverageStars.vue';
+  import LanguageFlag from './LanguageFlag.vue';
 
   export default{
     name: 'TvCard',
+    components:{
+      VoteAverageStars,
+      LanguageFlag,
+    },
     props:{
       tv: Object
-    },
-    data(){
-      return{
-        countries
-      }
-    },
-    computed:{
-      countryControl(){
-        if(this.tv.original_language === "en"){
-          return "GB";
-        } else {
-          return this.tv.original_language.toUpperCase();
-        }
-      },
-      country(){
-        if(this.tv.original_language === "en"){
-          return "gb";
-        } else{
-          return this.tv.original_language;
-        }
-      }
     }
   }
 </script>
@@ -37,11 +21,11 @@
     <br>
     <span>Titolo originale: {{tv.original_name}}</span>
     <br>
-    <span v-if="countries.includes(countryControl)">Lingua: <span class="fi "
-    :class="'fi-'+ country"></span></span>
-    <span v-else>Lingua: {{tv.original_language}}</span>
+    <LanguageFlag :language="tv.original_language"/>
     <br>
-    <span>Voto: {{tv.vote_average}}</span>
+    
+    <span>Voto: </span>
+    <VoteAverageStars :vote="tv.vote_average"/>
   </div>
 </template>
 
