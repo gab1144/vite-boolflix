@@ -17,7 +17,6 @@
   @use '../styles/partials/mixin' as *;
 
   main {
-    background-color: $main-background-color;
     color: white;
   }
 </style>
