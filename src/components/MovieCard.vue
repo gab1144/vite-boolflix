@@ -25,13 +25,17 @@
         } else{
           return this.movie.original_language;
         }
-      }
+      },
+      starNumber(){
+        return Math.ceil(this.movie.vote_average / 2);
+      },
     }
   }
 </script>
 
 <template>
   <div>
+    <img :src="'https://image.tmdb.org/t/p/w342/'+ movie.backdrop_path" :alt="movie.title">
     <span>Titolo: {{movie.title}}</span>
     <br>
     <span>Titolo originale: {{movie.original_title}}</span>
@@ -40,7 +44,21 @@
     :class="'fi-'+ country"></span></span>
     <span v-else>Lingua: {{movie.original_language}}</span>
     <br>
-    <span>Voto: {{movie.vote_average}}</span>
+    
+    <span>Voto: {{starNumber}}</span>
+
+    <span
+    v-for="index in starNumber">
+      STAR
+    </span>
+
+    <span
+    v-for="index in (5 - starNumber)">
+      EMPTY STAR
+    </span>
+    
+    <i class="fa-regular fa-star"></i>
+
   </div>
 </template>
 

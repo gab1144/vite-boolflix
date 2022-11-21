@@ -32,6 +32,7 @@
 
 <template>
   <div>
+    <img :src="'https://image.tmdb.org/t/p/w342/'+ tv.backdrop_path" :alt="tv.name">
     <span>Titolo: {{tv.name}}</span>
     <br>
     <span>Titolo originale: {{tv.original_name}}</span>
