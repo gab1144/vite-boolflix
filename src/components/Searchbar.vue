@@ -1,19 +1,20 @@
 <script>
-  import Searchbar from './Searchbar.vue';
-  
+  import {store} from '../data/store';
   export default{
-    name: 'AppHeader',
-    components:{
-      Searchbar
+    name: 'Searchbar',
+    data(){
+      return{
+        store
+      }
     }
   }
 </script>
 
 <template>
-  <header>
-    <h1>BOOLFLIX</h1>
-    <Searchbar @searchMovieorTv="$emit('search')"/>
-  </header>
+  <div>
+    <input type="text" v-model="store.searchedTitle">
+    <button @click="$emit('searchMovieorTv')">Cerca</button>
+  </div>
 </template>
 
 <style lang="scss" scoped>

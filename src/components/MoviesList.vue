@@ -1,35 +1,28 @@
 <script>
-
   import {store} from '../data/store';
-  import MoviesList from './MoviesList.vue';
+  import MovieCard from './MovieCard.vue';
 
   export default{
-    name: 'AppMain',
+    name: 'MovieList',
     data(){
       return {
         store
       }
     },
     components:{
-      MoviesList
+      MovieCard
     }
   }
 </script>
 
 <template>
-  <main>
-    <div class="container">
-      <h2>Film</h2>
-      <MoviesList/>
-    </div>
-  </main>
+      <MovieCard
+        v-for="movie of store.moviesListData.results"
+        :key="movie.id"
+        :movie="movie"/>
 </template>
 
 <style lang="scss" scoped>
   @use '../styles/partials/vars' as *;
   @use '../styles/partials/mixin' as *;
-
-  main {
-    color: white;
-  }
 </style>
