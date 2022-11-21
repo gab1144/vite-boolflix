@@ -14,15 +14,16 @@
 </script>
 
 <template>
-    <i
-    class="fa-solid fa-star"
-    v-for="index in starNumber">
-    </i>
+  <span>Voto: </span>
+  <i
+  class="fa-solid fa-star"
+  v-for="index in starNumber">
+  </i>
 
-    <i
-    class="fa-regular fa-star"
-    v-for="index in (5 - starNumber)">
-    </i>
+  <i
+  class="fa-regular fa-star"
+  v-for="index in (5 - starNumber)">
+  </i>
 </template>
 
 <style lang="scss" scoped>

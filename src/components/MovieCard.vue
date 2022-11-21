@@ -23,10 +23,7 @@
     <br>
     <LanguageFlag :language="movie.original_language"/>
     <br>
-    
-    <span>Voto: </span>
     <VoteAverageStars :vote="movie.vote_average"/>
-
   </div>
 </template>
 

@@ -23,8 +23,6 @@
     <br>
     <LanguageFlag :language="tv.original_language"/>
     <br>
-    
-    <span>Voto: </span>
     <VoteAverageStars :vote="tv.vote_average"/>
   </div>
 </template>
