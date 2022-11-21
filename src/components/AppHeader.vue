@@ -11,7 +11,7 @@
 
 <template>
   <header>
-    <h1>BOOLFLIX</h1>
+    <img src="/public/logo-boolflix.png" alt="Logo Boolflix" class="logo">
     <Searchbar @searchMovieorTv="$emit('search')"/>
   </header>
 </template>
@@ -25,8 +25,8 @@
     height: 80px;
     padding: 0 20px;
     @include vCenterSpcBtw();
-    h1 {
-      color: red;
+    .logo {
+      height: 60px;
     }
   }
 </style>
