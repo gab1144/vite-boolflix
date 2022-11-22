@@ -17,55 +17,49 @@
       }
     },
     methods:{
-      getMovies(){
+      getMovies(type){
         if(store.firstApi || store.searchedTitle !== ""  & !store.firstApi){
-
-          let urlMovies = store.apiUrlMovies;
-          let urlTv = store.apiUrlTv;
-          
+          let url;
           if(store.firstApi){
-            urlMovies = store.apiUrlMoviesTop;
-            urlTv = store.apiUrlTvTop;
-            store.firstApi= false;
+            if(type === 'movie'){
+              url = store.apiUrlMoviesTop;
+            } else {
+              url = store.apiUrlTvTop;
+              store.firstApi= false;
+            }
+          } else {
+            url = store.apiUrl + type;
           }
-          
-          axios.get(urlMovies, {
+
+          axios.get(url, {
             params: {
               api_key: store.apiKey,
               query: store.searchedTitle,
+              language: 'it-IT'
             }
           })
           .then(result=> {
-            store.moviesListData = result.data;
-          })
-          .catch(error => {
-            console.log(error);
-          })
-        
-          axios.get(urlTv, {
-            params: {
-              api_key: store.apiKey,
-              query: store.searchedTitle,
-            }
-          })
-          .then(result=> {
-            store.tvListData = result.data;
+            store[type] = result.data;
           })
           .catch(error => {
             console.log(error);
           })
         }
+      },
+      startSearch(){
+        this.getMovies('movie');
+        this.getMovies('tv');
       }
     }, 
     mounted(){
-      this.getMovies();
+      this.startSearch();
     }
   }
 </script>
 
 <template>
 
-  <AppHeader @search="getMovies()"/>
+  <AppHeader @search="startSearch()"/>
 
   <AppMain/>
 

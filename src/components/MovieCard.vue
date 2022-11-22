@@ -21,15 +21,15 @@
 </script>
 
 <template>
-  <div class="movie-card">
-    <CardImg :path="movie.poster_path" :altString="movie.title"    
+  <div class="card">
+    <CardImg :path="movie.poster_path" :altString="movie.title || movie.name"    
       @mouseover="isHover = true"
       @mouseleave="isHover = false"/>
       
-    <div class="info-movie" v-if="isHover">
-      <span>Titolo: {{movie.title}}</span>
+    <div class="info-card" v-if="isHover">
+      <span>Titolo: {{movie.title || movie.name}}</span>
       <br>
-      <span>Titolo originale: {{movie.original_title}}</span>
+      <span>Titolo originale: {{movie.original_title || movie.original_name}}</span>
       <br>
       <LanguageFlag :language="movie.original_language"/>
       <br>
@@ -42,13 +42,13 @@
   @use '../styles/partials/vars' as *;
   @use '../styles/partials/mixin' as *;
   
-  .movie-card{
+  .card{
     padding: 0 30px;
     width: calc(100% / 3);
     margin-bottom: 30px;
     position: relative;
   }
-  .info-movie{
+  .info-card{
     padding: 0 30px;
     position: absolute;
     top: 0;

@@ -4,6 +4,9 @@
 
   export default{
     name: 'MovieList',
+    props:{
+      type: String
+    },
     data(){
       return {
         store
@@ -11,23 +14,28 @@
     },
     components:{
       MovieCard
+    },
+    computed:{
+      title(){
+        if(this.type === "tv"){
+          return "Serie TV";
+        } else {
+          return "Film";
+        }
+      }
     }
   }
 </script>
 
 <template>
-  <div class="container" v-if="store.moviesListData.results">
-    <h2>Film</h2>
+  <div class="container">
+    <h2>{{title}}</h2>
     <div class="card-area">
       <MovieCard
-      v-for="movie of store.moviesListData.results"
+      v-for="movie of store[type].results"
       :key="movie.id"
       :movie="movie"/>
     </div>
-  </div>
-  
-  <div class="container" v-else>
-    <span>Nessun riusultato trovato</span>
   </div>
 </template>
 

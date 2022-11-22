@@ -21,7 +21,7 @@
   @use '../styles/partials/mixin' as *;
 
   header{
-    background-color: $header-background-color;
+    background: linear-gradient(180deg, $header-background-color 50%, $main-background-color 100%);
     height: 80px;
     padding: 0 20px;
     @include vCenterSpcBtw();

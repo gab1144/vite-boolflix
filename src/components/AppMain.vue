@@ -2,7 +2,6 @@
 
   import {store} from '../data/store';
   import MoviesList from './MoviesList.vue';
-  import TvList from './TvList.vue';
 
   export default{
     name: 'AppMain',
@@ -12,17 +11,25 @@
       }
     },
     components:{
-      MoviesList,
-      TvList
+      MoviesList
     }
   }
 </script>
 
 <template>
   <main>  
-    <MoviesList/>
+    <MoviesList :type="'movie'" v-if="store.movie.results"/>
     
-    <TvList/>
+    <div class="container" v-else>
+      <span>Nessun riusultato trovato</span>
+    </div>
+
+
+    <MoviesList :type="'tv'" v-if="store.tv.results"/>
+
+    <div class="container" v-else>
+      <span>Nessun riusultato trovato</span>
+    </div>
   </main>
 </template>
 
