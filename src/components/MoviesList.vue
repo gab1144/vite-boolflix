@@ -44,6 +44,7 @@
   @use '../styles/partials/mixin' as *;
 
   .card-area{
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
   }

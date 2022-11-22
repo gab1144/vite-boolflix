@@ -21,10 +21,10 @@
 </script>
 
 <template>
-  <div class="card">
-    <CardImg :path="movie.poster_path" :altString="movie.title || movie.name"    
+  <div class="card"    
       @mouseover="isHover = true"
-      @mouseleave="isHover = false"/>
+      @mouseleave="isHover = false">
+    <CardImg :path="movie.poster_path" :altString="movie.title || movie.name"/>
       
     <div class="info-card" v-if="isHover">
       <span>Titolo: {{movie.title || movie.name}}</span>
@@ -38,20 +38,32 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @use '../styles/partials/vars' as *;
   @use '../styles/partials/mixin' as *;
   
   .card{
-    padding: 0 30px;
-    width: calc(100% / 3);
+    width: calc(calc(100% - 50px)/ 3);
+    margin: 0 calc(50px / 6);
     margin-bottom: 30px;
+    border-radius: 10px;
     position: relative;
-  }
-  .info-card{
-    padding: 0 30px;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+    transition: 0.4s ease-out;
+    &:hover{
+      transform: translateY(-20px);
+      box-shadow: 8px 11px 16px 5px rgba(0,0,0,0.85);
+    }
+    .info-card{
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      opacity: 1;
+      transform: translateY(0px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 30px;
+    }
+}
 </style>
