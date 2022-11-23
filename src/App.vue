@@ -42,7 +42,7 @@
             store[type] = result.data;
               for(let i = 0; i < store[type].results.length; i++){
                 let id = parseInt(store[type].results[i].id);
-                this.getCast(type + 'Cast', id);
+                this.getCast(type, type + 'Cast', id);
               }
           })
           .catch(error => {
@@ -56,13 +56,8 @@
         this.getMovies('movie');
         this.getMovies('tv');
       },
-      getCast(castType, id){
-        let url;
-        if(castType === "movieCast"){
-          url = "http://api.themoviedb.org/3/movie/";
-        } else {
-          url = "http://api.themoviedb.org/3/tv/";
-        }
+      getCast(type, castType, id){
+        const url= `http://api.themoviedb.org/3/${type}/`;
         axios.get(url + id + "/credits", {
           params: {
             api_key: store.apiKey,
@@ -80,13 +75,8 @@
           console.log(error);
         })
       },
-      getMovieGenres(genresType){
-        let url;
-        if(genresType === "movieGenres"){
-          url = "https://api.themoviedb.org/3/genre/movie/list";
-        } else {
-          url = "https://api.themoviedb.org/3/genre/tv/list";
-        }
+      getMovieGenres(type, genresType){
+        const url = `https://api.themoviedb.org/3/genre/${type}/list`;
         axios.get(url, {
           params: {
             api_key: store.apiKey,
@@ -103,8 +93,8 @@
     }, 
     mounted(){
       this.startSearch();
-      this.getMovieGenres('movieGenres');
-      this.getMovieGenres('tvGenres');
+      this.getMovieGenres('movie', 'movieGenres');
+      this.getMovieGenres('tv', 'tvGenres');
 
     }
   }
