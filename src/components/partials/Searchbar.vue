@@ -1,7 +1,11 @@
 <script>
   import {store} from '../../data/store';
+  import GenreSelect from './GenreSelect.vue'
   export default{
     name: 'Searchbar',
+    components:{
+      GenreSelect
+    },
     data(){
       return{
         store
@@ -12,6 +16,8 @@
 
 <template>
   <div>
+  <GenreSelect :typeGenre="'movieGenres'" :typeFilter="'movieFilter'"/>
+  <GenreSelect :typeGenre="'tvGenres'" :typeFilter="'tvFilter'"/>
     <input type="text" v-model="store.searchedTitle">
     <button @click="$emit('searchMovieorTv')">Cerca</button>
   </div>
@@ -21,13 +27,7 @@
   @use '../../styles/partials/vars' as *;
   @use '../../styles/partials/mixin' as *;
 
-  header{
-    background-color: $header-background-color;
-    height: 80px;
-    padding: 0 20px;
-    @include vCenterSpcBtw();
-    h1 {
-      color: red;
-    }
+  span {
+    color: white;
   }
 </style>
