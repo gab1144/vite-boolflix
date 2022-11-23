@@ -30,7 +30,7 @@
           } else {
             url = store.apiUrl + type;
           }
-
+          
           axios.get(url, {
             params: {
               api_key: store.apiKey,
@@ -40,6 +40,13 @@
           })
           .then(result=> {
             store[type] = result.data;
+            if(type === 'movie'){
+              for(let i = 0; i < store[type].results.length; i++){
+                let id = parseInt(store[type].results[i].id);
+                this.getCast('movie', 'movieCast', id);
+                console.log(id);
+              }
+            }
           })
           .catch(error => {
             console.log(error);
@@ -47,8 +54,29 @@
         }
       },
       startSearch(){
+        store.movieCast= [];
+        store.tvCast= [];
         this.getMovies('movie');
+        
         this.getMovies('tv');
+      },
+      getCast(type, castType, id){
+        axios.get("http://api.themoviedb.org/3/movie/" + id + "/casts", {
+          params: {
+            api_key: store.apiKey,
+            language: 'it-IT'
+          }
+        })
+        .then(result=> {
+            const cast = [];
+            for(let i = 0; i <  5; i++){
+              cast.push(result.data.cast[i]);
+            }
+            store[castType].push(cast)
+        })
+        .catch(error => {
+          console.log(error);
+        })
       }
     }, 
     mounted(){

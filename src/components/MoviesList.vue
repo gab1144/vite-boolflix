@@ -32,9 +32,10 @@
     <h2>{{title}}</h2>
     <div class="card-area">
       <MovieCard
-      v-for="movie of store[type].results"
+      v-for="(movie, index) of store[type].results"
       :key="movie.id"
-      :movie="movie"/>
+      :movie="movie"
+      :movieIndex="index"/>
     </div>
   </div>
 </template>

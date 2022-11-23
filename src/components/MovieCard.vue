@@ -2,6 +2,7 @@
   import VoteAverageStars from './VoteAverageStars.vue';
   import LanguageFlag from './LanguageFlag.vue';
   import CardImg from './CardImg.vue';
+  import {store} from '../data/store';
   export default{
     name: 'MovieCard',
     components:{
@@ -10,11 +11,26 @@
       LanguageFlag
     },
     props:{
-      movie: Object
+      movie: Object,
+      movieIndex: Number
     },
     data(){
       return{
-        isHover: false
+        isHover: false,
+        store
+      }
+    },
+    computed:{
+      castList(){
+        let output= "";
+        for(let i = 0; i < 5; i++){
+          if(i !== 4){
+            output += store.movieCast[this.movieIndex][i].name + ", ";
+          } else {
+            output += store.movieCast[this.movieIndex][i].name + "";
+          }
+        }
+        return output;
       }
     }
   }
@@ -34,6 +50,10 @@
       <LanguageFlag :language="movie.original_language"/>
       <br>
       <VoteAverageStars :vote="movie.vote_average"/>
+
+      <br>
+      <span>Cast: {{castList}}</span>
+      
     </div>
   </div>
 </template>
