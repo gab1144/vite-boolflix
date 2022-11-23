@@ -14,7 +14,8 @@
     props:{
       movie: Object,
       movieIndex: Number,
-      typeCast: String
+      typeCast: String,
+      typeGenres: String
     },
     data(){
       return{
@@ -29,7 +30,7 @@
           if(i !== 4){
             output += store[this.typeCast][this.movieIndex][i].name + ", ";
           } else {
-            output += store.movieCast[this.movieIndex][i].name + "...";
+            output += store[this.typeCast][this.movieIndex][i].name + "...";
           }
         }
         return output;
@@ -41,7 +42,7 @@
           if(i === this.movie.genre_ids.length - 1){
             last = true;
           }
-          for(const genre of store.movieGenres)
+          for(const genre of store[this.typeGenres])
           if(genre.id === this.movie.genre_ids[i]){
             if(last){
               output += genre.name;  

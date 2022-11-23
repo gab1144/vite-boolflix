@@ -36,7 +36,8 @@
       :key="movie.id"
       :movie="movie"
       :movieIndex="index"
-      :typeCast= "type + 'Cast'"/>
+      :typeCast= "type + 'Cast'"
+      :typeGenres= "type + 'Genres'"/>
     </div>
   </div>
 </template>
