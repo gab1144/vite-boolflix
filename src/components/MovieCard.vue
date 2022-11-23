@@ -87,21 +87,16 @@
       
     <div class="info-card" v-if="isHover">
       <span>Titolo: {{movie.title || movie.name}}</span>
-      <br>
       <span>Titolo originale: {{movie.original_title || movie.original_name}}</span>
-      <br>
       <LanguageFlag :language="movie.original_language"/>
-      <br>
       <VoteAverageStars :vote="movie.vote_average"/>
-      <br>
       <span>Cast: {{castList}}</span>
-      <br>
       <span>Generi: {{genresList}}</span>
     </div>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @use '../styles/partials/vars' as *;
   @use '../styles/partials/mixin' as *;
   
@@ -127,6 +122,28 @@
       top: 0;
       left: 0;
       padding: 30px;
+      overflow: auto;
+      span {
+        display: block;
+      }
     }
+}
+
+/******************************
+        RESPONSIVE
+******************************/
+
+@media screen and (max-width: 767px){
+  .card {
+    width: calc(calc(100% - 50px)/ 2);
+    margin: 0 calc(50px / 4);
+  }
+}
+
+@media screen and (max-width: 575px){
+  .card {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 </style>
