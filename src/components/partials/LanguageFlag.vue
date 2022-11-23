@@ -32,9 +32,11 @@
 </script>
 
 <template>
-  <span v-if="countries.includes(countryControl)">Lingua: <span class="fi "
-    :class="'fi-'+ country"></span></span>
-    <span v-else>Lingua: {{language}}</span>
+  <div>
+    <span v-if="countries.includes(countryControl)">Lingua: <span class="fi "
+      :class="'fi-'+ country"></span></span>
+      <span v-else>Lingua: {{language}}</span>
+  </div>
 </template>
 
 <style lang="scss" scoped>

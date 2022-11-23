@@ -1,5 +1,5 @@
 <script>
-  import VoteAverageStars from './VoteAverageStars.vue';
+  import VoteAverageStars from './partials/VoteAverageStars.vue';
   import LanguageFlag from './partials/LanguageFlag.vue';
   import CardImg from './partials/CardImg.vue';
   import {store} from '../data/store';
@@ -83,15 +83,25 @@
       @mouseover="isHover = true"
       @mouseleave="isHover = false"
       v-if="filteredMovie">
-    <CardImg :path="movie.poster_path" :altString="movie.title || movie.name"/>
+      <CardImg :path="movie.poster_path" :altString="movie.title || movie.name"/>
       
-    <div class="info-card" v-if="isHover">
-      <span>Titolo: {{movie.title || movie.name}}</span>
-      <span>Titolo originale: {{movie.original_title || movie.original_name}}</span>
-      <LanguageFlag :language="movie.original_language"/>
-      <VoteAverageStars :vote="movie.vote_average"/>
-      <span>Cast: {{castList}}</span>
-      <span>Generi: {{genresList}}</span>
+    <div class="info-padding" v-if="isHover">
+      <div class="info-card">
+        <div><span class="title">Titolo: </span>{{movie.title || movie.name}}</div>
+        
+        <div><span class="title">Titolo originale: </span>{{movie.original_title || movie.original_name}}</div>
+        
+        <LanguageFlag :language="movie.original_language"/>
+        
+        <VoteAverageStars :vote="movie.vote_average"/>
+        
+        <div><span class="title">Cast: </span>{{castList}}</div>
+        
+        <div><span class="title">Generi: </span>{{genresList}}</div>
+        
+        <div class="overview"><span>{{movie.overview}}</span></div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -111,20 +121,32 @@
       transform: translateY(-20px);
       box-shadow: 8px 11px 16px 5px rgba(0,0,0,0.85);
     }
-    .info-card{
+    .info-padding{
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
-      opacity: 1;
-      transform: translateY(0px);
       position: absolute;
       top: 0;
       left: 0;
-      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      transform: translateY(0px);
+    }
+    .info-card{
+      width: calc(100% - 30px);
+      height: calc(100% - 30px);
+      margin: 15px;
+      padding-right: 10px;
+      opacity: 1;
       overflow: auto;
-      span {
-        display: block;
+      div {
+        margin-bottom: 15px;
+      }
+      .title {
+        font-weight: 600;
+        font-size: 18px;
+      }
+      .overview {
+        margin-top: 30px;
       }
     }
 }
