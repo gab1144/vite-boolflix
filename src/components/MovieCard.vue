@@ -27,13 +27,15 @@
     computed:{
       castList(){
         let output= "";
-        for(let i = 0; i < 5; i++){
-          if(i !== 4){
+        let i = 0;
+        while(i < 5 && store[this.typeCast][this.movieIndex][i] !== undefined){
             output += store[this.typeCast][this.movieIndex][i].name + ", ";
-          } else {
-            output += store[this.typeCast][this.movieIndex][i].name + "...";
-          }
+          i++;
         }
+
+        //console.log(output.substring(0, output.length - 2));
+        //output = output.substring(0, -2) + '...';
+
         return output;
       },
       genresList(){
@@ -55,14 +57,16 @@
         return output;
       },
       filteredMovie(){
-        if (store[this.typeFilter] === ""){
+
+        if (store.movieFilter === "" && store.tvFilter === ""){
           return true;
+        }
+
+        if (this.typeFilter === "tvFilter"){
+          return this.movie.genre_ids.includes(store.tvFilter);
+
         } else {
-          if(this.movie.genre_ids.includes(store[this.typeFilter])){
-            return true;
-          } else {
-            return false;
-          }
+          return this.movie.genre_ids.includes(store.movieFilter);
         }
       }
     }
@@ -72,7 +76,8 @@
 <template>
   <div class="card"    
       @mouseover="isHover = true"
-      @mouseleave="isHover = false">
+      @mouseleave="isHover = false"
+      v-if="filteredMovie">
     <CardImg :path="movie.poster_path" :altString="movie.title || movie.name"/>
       
     <div class="info-card" v-if="isHover">
