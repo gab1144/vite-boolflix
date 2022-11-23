@@ -29,4 +29,20 @@
       height: 60px;
     }
   }
+
+/******************************
+        RESPONSIVE
+******************************/
+
+@media screen and (max-width: 767px){
+  header {
+    height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    Searchbar {
+      width: 100%;
+    }
+  }
+}
 </style>

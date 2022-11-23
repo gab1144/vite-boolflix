@@ -24,11 +24,13 @@
 </script>
 
 <template>
-  <span>Genere {{title}}: </span>
+  <div class="filter">
+    <span>Genere {{title}}: </span>
     <select class="form-select" v-model="store[typeFilter]">
       <option selected value="">All</option>
       <option v-for="(genre, index) of store[typeGenre]" :key="index" :value="genre.id">{{genre.name}}</option>
-      </select>
+    </select>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -37,5 +39,16 @@
 
   span {
     color: white;
+    display: block;
+    width: 40%;
+  }
+  select{
+    width: 60%;
+  }
+  .filter{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 </style>
