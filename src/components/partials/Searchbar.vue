@@ -1,5 +1,5 @@
 <script>
-  import {store} from '../data/store';
+  import {store} from '../../data/store';
   export default{
     name: 'Searchbar',
     data(){
@@ -18,8 +18,8 @@
 </template>
 
 <style lang="scss" scoped>
-  @use '../styles/partials/vars' as *;
-  @use '../styles/partials/mixin' as *;
+  @use '../../styles/partials/vars' as *;
+  @use '../../styles/partials/mixin' as *;
 
   header{
     background-color: $header-background-color;

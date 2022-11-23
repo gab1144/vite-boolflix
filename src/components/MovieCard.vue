@@ -1,7 +1,7 @@
 <script>
   import VoteAverageStars from './VoteAverageStars.vue';
-  import LanguageFlag from './LanguageFlag.vue';
-  import CardImg from './CardImg.vue';
+  import LanguageFlag from './partials/LanguageFlag.vue';
+  import CardImg from './partials/CardImg.vue';
   import {store} from '../data/store';
 
   export default{

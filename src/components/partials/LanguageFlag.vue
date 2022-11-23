@@ -38,6 +38,6 @@
 </template>
 
 <style lang="scss" scoped>
-  @use '../styles/partials/vars' as *;
-  @use '../styles/partials/mixin' as *;
+  @use '../../styles/partials/vars' as *;
+  @use '../../styles/partials/mixin' as *;
 </style>
