@@ -44,11 +44,18 @@
   }
   select{
     width: 60%;
+    background-color: red;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px;
   }
   .filter{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 5px 0;
   }
 </style>

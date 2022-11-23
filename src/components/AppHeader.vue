@@ -22,7 +22,7 @@
 
   header{
     background: linear-gradient(180deg, $header-background-color 50%, $main-background-color 100%);
-    height: 80px;
+    height: 120px;
     padding: 0 20px;
     @include vCenterSpcBtw();
     .logo {
@@ -36,7 +36,7 @@
 
 @media screen and (max-width: 767px){
   header {
-    height: 150px;
+    height: 200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
