@@ -158,7 +158,8 @@
 @media screen and (max-width: 767px){
   .card {
     width: calc(calc(100% - 50px)/ 2);
-    margin: 0 calc(50px / 4);
+    margin-left: calc(50px / 4);
+    margin-right: calc(50px / 4);
   }
 }
 
@@ -166,6 +167,7 @@
   .card {
     width: 90%;
     margin: 0 auto;
+    margin-bottom: 30px;
   }
 }
 </style>
