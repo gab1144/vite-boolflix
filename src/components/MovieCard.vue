@@ -15,7 +15,8 @@
       movie: Object,
       movieIndex: Number,
       typeCast: String,
-      typeGenres: String
+      typeGenres: String,
+      typeFilter: String
     },
     data(){
       return{
@@ -52,6 +53,17 @@
           }
         }
         return output;
+      },
+      filteredMovie(){
+        if (store[this.typeFilter] === ""){
+          return true;
+        } else {
+          if(this.movie.genre_ids.includes(store[this.typeFilter])){
+            return true;
+          } else {
+            return false;
+          }
+        }
       }
     }
   }

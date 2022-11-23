@@ -1,4 +1,5 @@
 <script>
+
   export default{
     name: 'CardImg',
     props:{
@@ -10,7 +11,7 @@
 
 <template>
   <div class="img-area">
-    <img :src="'https://image.tmdb.org/t/p/w342/' + path" :alt="altString">
+    <img :src="'https://image.tmdb.org/t/p/w342/' + path" :alt="altString" onerror="this.onerror=null; this.src='/image-not-found.png'">
   </div>
 </template>
 
@@ -25,6 +26,7 @@
     img {
       width: 100%;
       border-radius: 10px;
+      object-fit:cover;
     }
   }
 </style>
