@@ -15,8 +15,7 @@
       movie: Object,
       movieIndex: Number,
       typeCast: String,
-      typeGenres: String,
-      typeFilter: String
+      typeGenres: String
     },
     data(){
       return{
@@ -33,8 +32,7 @@
           i++;
         }
 
-        //console.log(output.substring(0, output.length - 2));
-        //output = output.substring(0, -2) + '...';
+        output = output.substring(0, output.length -2) + '...';
 
         return output;
       },
@@ -57,16 +55,23 @@
         return output;
       },
       filteredMovie(){
-
-        if (store.movieFilter === "" && store.tvFilter === ""){
-          return true;
-        }
-
-        if (this.typeFilter === "tvFilter"){
-          return this.movie.genre_ids.includes(store.tvFilter);
-
+        
+        if (store.movieFilter !== "" || store.tvFilter !== ""){
+          if ((this.typeGenres === "tvGenres" && store.tvFilter === "") || (this.typeGenres === "movieGenres" && store.movieFilter === "")){
+            return true;
+          }
+          if (this.typeGenres === "tvGenres"){
+            console.log(this.typeGenres);
+            console.log(this.movie.genre_ids.includes(store.tvFilter));
+            return this.movie.genre_ids.includes(store.tvFilter);
+            
+          } else {
+            console.log(this.typeGenres);
+            console.log(this.movie.genre_ids.includes(store.movieFilter));
+            return this.movie.genre_ids.includes(store.movieFilter);
+          }
         } else {
-          return this.movie.genre_ids.includes(store.movieFilter);
+          return true;
         }
       }
     }

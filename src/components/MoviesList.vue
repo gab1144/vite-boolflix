@@ -37,8 +37,7 @@
       :movie="movie"
       :movieIndex="index"
       :typeCast= "type + 'Cast'"
-      :typeGenres= "type + 'Genres'"
-      :typeFiter= "type + 'Filter'"/>
+      :typeGenres= "type + 'Genres'"/>
     </div>
   </div>
 </template>
