@@ -63,7 +63,6 @@
         } else {
           url = "http://api.themoviedb.org/3/tv/";
         }
-        console.log(url);
         axios.get(url + id + "/credits", {
           params: {
             api_key: store.apiKey,
@@ -80,10 +79,33 @@
         .catch(error => {
           console.log(error);
         })
-      }
+      },
+      getMovieGenres(genresType){
+        let url;
+        if(genresType === "movieGenres"){
+          url = "https://api.themoviedb.org/3/genre/movie/list";
+        } else {
+          url = "https://api.themoviedb.org/3/genre/tv/list";
+        }
+        axios.get(url, {
+          params: {
+            api_key: store.apiKey,
+            language: 'it-IT'
+          }
+        })
+        .then(result=> {
+            store[genresType] = result.data.genres;
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      },
     }, 
     mounted(){
       this.startSearch();
+      this.getMovieGenres('movieGenres');
+      this.getMovieGenres('tvGenres');
+
     }
   }
 </script>

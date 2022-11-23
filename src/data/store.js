@@ -11,5 +11,7 @@ export const store = reactive({
   tv: {},
   firstApi:true,
   movieCast: [],
-  tvCast: []
+  tvCast: [],
+  movieGenres: [],
+  tvGenres: [],
 });

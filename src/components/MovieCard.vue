@@ -33,6 +33,24 @@
           }
         }
         return output;
+      },
+      genresList(){
+        let output= "";
+        for(let i = 0; i < this.movie.genre_ids.length; i++){
+          let last = false;
+          if(i === this.movie.genre_ids.length - 1){
+            last = true;
+          }
+          for(const genre of store.movieGenres)
+          if(genre.id === this.movie.genre_ids[i]){
+            if(last){
+              output += genre.name;  
+            } else {
+              output += genre.name + ", ";
+            }
+          }
+        }
+        return output;
       }
     }
   }
@@ -52,10 +70,10 @@
       <LanguageFlag :language="movie.original_language"/>
       <br>
       <VoteAverageStars :vote="movie.vote_average"/>
-
       <br>
       <span>Cast: {{castList}}</span>
-      
+      <br>
+      <span>Generi: {{genresList}}</span>
     </div>
   </div>
 </template>
