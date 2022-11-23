@@ -40,13 +40,10 @@
           })
           .then(result=> {
             store[type] = result.data;
-            if(type === 'movie'){
               for(let i = 0; i < store[type].results.length; i++){
                 let id = parseInt(store[type].results[i].id);
-                this.getCast('movie', 'movieCast', id);
-                console.log(id);
+                this.getCast(type + 'Cast', id);
               }
-            }
           })
           .catch(error => {
             console.log(error);
@@ -57,11 +54,17 @@
         store.movieCast= [];
         store.tvCast= [];
         this.getMovies('movie');
-        
         this.getMovies('tv');
       },
-      getCast(type, castType, id){
-        axios.get("http://api.themoviedb.org/3/movie/" + id + "/casts", {
+      getCast(castType, id){
+        let url;
+        if(castType === "movieCast"){
+          url = "http://api.themoviedb.org/3/movie/";
+        } else {
+          url = "http://api.themoviedb.org/3/tv/";
+        }
+        console.log(url);
+        axios.get(url + id + "/credits", {
           params: {
             api_key: store.apiKey,
             language: 'it-IT'

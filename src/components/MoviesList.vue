@@ -35,7 +35,8 @@
       v-for="(movie, index) of store[type].results"
       :key="movie.id"
       :movie="movie"
-      :movieIndex="index"/>
+      :movieIndex="index"
+      :typeCast= "type + 'Cast'"/>
     </div>
   </div>
 </template>

@@ -3,6 +3,7 @@
   import LanguageFlag from './LanguageFlag.vue';
   import CardImg from './CardImg.vue';
   import {store} from '../data/store';
+
   export default{
     name: 'MovieCard',
     components:{
@@ -12,7 +13,8 @@
     },
     props:{
       movie: Object,
-      movieIndex: Number
+      movieIndex: Number,
+      typeCast: String
     },
     data(){
       return{
@@ -25,9 +27,9 @@
         let output= "";
         for(let i = 0; i < 5; i++){
           if(i !== 4){
-            output += store.movieCast[this.movieIndex][i].name + ", ";
+            output += store[this.typeCast][this.movieIndex][i].name + ", ";
           } else {
-            output += store.movieCast[this.movieIndex][i].name + "";
+            output += store.movieCast[this.movieIndex][i].name + "...";
           }
         }
         return output;
